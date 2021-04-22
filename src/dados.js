@@ -1,134 +1,50 @@
-export const dados = [
+export const months = [
     {
-        id: Math.floor(Math.random() * 10000),
-        title: "Nome da Conta",
-        pgt: "crd",
-        val: Number(Math.random() * 100).toFixed(2)
+        seq: 0,
+        mes: "Janeiro"
     },
     {
-        id: Math.floor(Math.random() * 10000),
-        title: "Nome da Conta",
-        pgt: "avt",
-        val: Number(Math.random() * 100).toFixed(2)
+        seq: 1,
+        mes: "Fevereiro"
     },
     {
-        id: Math.floor(Math.random() * 10000),
-        title: "Nome da Conta",
-        pgt: "crd",
-        val: Number(Math.random() * 100).toFixed(2)
+        seq: 2,
+        mes: "Março"
     },
     {
-        id: Math.floor(Math.random() * 10000),
-        title: "Nome da Conta",
-        pgt: "avt",
-        val: Number(Math.random() * 100).toFixed(2)
+        seq: 3,
+        mes: "Abril"
     },
     {
-        id: Math.floor(Math.random() * 10000),
-        title: "Nome da Conta",
-        pgt: "crd",
-        val: Number(Math.random() * 100).toFixed(2)
+        seq: 4,
+        mes: "Maio"
     },
     {
-        id: Math.floor(Math.random() * 10000),
-        title: "Nome da Conta",
-        pgt: "avt",
-        val: Number(Math.random() * 100).toFixed(2)
+        seq: 5,
+        mes: "Junho"
     },
     {
-        id: Math.floor(Math.random() * 10000),
-        title: "Nome da Conta",
-        pgt: "crd",
-        val: Number(Math.random() * 100).toFixed(2)
+        seq: 6,
+        mes: "Julho"
     },
     {
-        id: Math.floor(Math.random() * 10000),
-        title: "Nome da Conta",
-        pgt: "avt",
-        val: Number(Math.random() * 100).toFixed(2)
+        seq: 7,
+        mes: "Agosto"
     },
     {
-        id: Math.floor(Math.random() * 10000),
-        title: "Nome da Conta",
-        pgt: "crd",
-        val: Number(Math.random() * 100).toFixed(2)
+        seq: 8,
+        mes: "Setembro"
     },
     {
-        id: Math.floor(Math.random() * 10000),
-        title: "Nome da Conta",
-        pgt: "avt",
-        val: Number(Math.random() * 100).toFixed(2)
+        seq: 9,
+        mes: "Outubro"
     },
     {
-        id: Math.floor(Math.random() * 10000),
-        title: "Nome da Conta",
-        pgt: "crd",
-        val: Number(Math.random() * 100).toFixed(2)
+        seq: 10,
+        mes: "Novembro"
     },
     {
-        id: Math.floor(Math.random() * 10000),
-        title: "Nome da Conta",
-        pgt: "avt",
-        val: Number(Math.random() * 100).toFixed(2)
-    },
-    {
-        id: Math.floor(Math.random() * 10000),
-        title: "Nome da Conta",
-        pgt: "crd",
-        val: Number(Math.random() * 100).toFixed(2)
-    },
-    {
-        id: Math.floor(Math.random() * 10000),
-        title: "Nome da Conta",
-        pgt: "avt",
-        val: Number(Math.random() * 100).toFixed(2)
-    },
-    {
-        id: Math.floor(Math.random() * 10000),
-        title: "Nome da Conta",
-        pgt: "crd",
-        val: Number(Math.random() * 100).toFixed(2)
-    },
-    {
-        id: Math.floor(Math.random() * 10000),
-        title: "Nome da Conta",
-        pgt: "avt",
-        val: Number(Math.random() * 100).toFixed(2)
-    },
-    {
-        id: Math.floor(Math.random() * 10000),
-        title: "Nome da Conta",
-        pgt: "crd",
-        val: Number(Math.random() * 100).toFixed(2)
-    },
-    {
-        id: Math.floor(Math.random() * 10000),
-        title: "Nome da Conta",
-        pgt: "avt",
-        val: Number(Math.random() * 100).toFixed(2)
-    },
-    {
-        id: Math.floor(Math.random() * 10000),
-        title: "Nome da Conta",
-        pgt: "crd",
-        val: Number(Math.random() * 100).toFixed(2)
-    },
-    {
-        id: Math.floor(Math.random() * 10000),
-        title: "Nome da Conta",
-        pgt: "avt",
-        val: Number(Math.random() * 100).toFixed(2)
-    },
-    {
-        id: Math.floor(Math.random() * 10000),
-        title: "Nome da Conta",
-        pgt: "crd",
-        val: Number(Math.random() * 100).toFixed(2)
-    },
-    {
-        id: Math.floor(Math.random() * 10000),
-        title: "Nome da Conta",
-        pgt: "avt",
-        val: Number(Math.random() * 100).toFixed(2)
+        seq: 11,
+        mes: "Dezembro"
     },
 ]

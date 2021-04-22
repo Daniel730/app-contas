@@ -2,12 +2,21 @@ import { StyleSheet } from "react-native";
 import { active, background, inactive, secondary, tertiary } from "./Colors";
 
 export default StyleSheet.create({
-
     homeContainer: {
         backgroundColor: background,
         flex: 1,
         paddingHorizontal: 15,
-        paddingTop: 15
+        paddingTop: 15,
+        alignItems: "center",
+        justifyContent: "center"
+    },
+
+    contentText: {
+        width: "100%", 
+        textAlign: 'center', 
+        fontSize: 20, 
+        color: active,
+        fontFamily: "Nexa"
     },
 
     addContainer: {
@@ -45,25 +54,27 @@ export default StyleSheet.create({
         fontWeight: 'bold'
     },
 
-    itemText: {
-        color: tertiary,
-        fontSize: 20,
-        fontFamily: "Nexa"
-    },
-
     spinner: {
-        backgroundColor: background, 
+        width: '100%',
+        backgroundColor: "rgb(255, 255, 255)", 
         flex: 1, 
         justifyContent: "center"
     },
 
     listItem: {
-        width: "100%",
+        width: 360,
         justifyContent: "space-between",
         flexDirection: "row",
-        padding: 30,
+        paddingHorizontal: 10,
+        paddingVertical: 10,
         marginVertical: 5,
-        backgroundColor: active
+        backgroundColor: active,
+    },
+
+    itemText: {
+        color: tertiary,
+        fontSize: 20,
+        fontFamily: "Nexa"
     },
 
     headerContainer: {
@@ -80,18 +91,54 @@ export default StyleSheet.create({
         justifyContent: 'center'
     },
 
-    contentText: {
-        width: "100%", 
-        textAlign: 'center', 
-        fontSize: 20, 
-        color: active,
-        fontFamily: "Nexa"
+    centeredView: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+        backgroundColor: "rgba(0, 0, 0, 0.4)"
     },
 
-    itemPgt: {
-        color: inactive, 
-        fontWeight: 'bold',
-        fontFamily: "Nexa"
-    }
+    modalView: {
+        flexDirection: 'row', 
+        flexWrap: 'wrap', 
+        alignItems: 'center',
+        margin: 20,
+        backgroundColor: "white",
+        borderRadius: 20,
+        padding: 35,
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 2
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 4,
+        elevation: 5
+    },
+
+    modalText: {
+        marginBottom: 15,
+        textAlign: "center",
+        fontFamily: "Nexa Bold",
+        fontSize: 20
+    },
+
+    button: {
+        borderRadius: 20,
+        padding: 10,
+        elevation: 2,
+        width: 80,
+        marginHorizontal: 5
+    },
+
+    buttonClose: {
+        backgroundColor: "#2196F3",
+    },
+
+    textStyle: {
+        color: "white",
+        fontWeight: "bold",
+        textAlign: "center"
+    },
 
 })

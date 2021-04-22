@@ -1,16 +1,19 @@
 import 'react-native-gesture-handler';
 import React from 'react'
+import Ionicons from 'react-native-vector-icons/Ionicons'
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
-import Ionicons from 'react-native-vector-icons/Ionicons'
+import { View } from 'react-native';
 
 import Home from './screens/Home';
 import Add from './screens/Add';
 import { active, background, inactive } from './style/Colors'
-import { View } from 'react-native';
+import { StorageProvider } from './providers/storage';
+
 const Tab = createBottomTabNavigator();
 
 export default () => {
+    
     const screenOpt = ({route}) => ({
         tabBarIcon: ({ focused, color, size}) => {
             let iconName;
@@ -38,22 +41,24 @@ export default () => {
         }
     }) 
     return (
-        <NavigationContainer>
-            <Tab.Navigator 
-                initialRouteName="Home" 
-                screenOptions={screenOpt}
-                tabBarOptions={{
-                    showLabel: false,
-                    activeTintColor: active,
-                    inactiveTintColor: inactive,
-                    style: {
-                        backgroundColor: background
-                    }
-                }}
-            >
-                <Tab.Screen name="Home" component={Home} />
-                <Tab.Screen name="Add" component={Add} />
-            </Tab.Navigator>
-      </NavigationContainer>
+        <StorageProvider>
+            <NavigationContainer>
+                <Tab.Navigator 
+                    initialRouteName="Home" 
+                    screenOptions={screenOpt}
+                    tabBarOptions={{
+                        showLabel: false,
+                        activeTintColor: active,
+                        inactiveTintColor: inactive,
+                        style: {
+                            backgroundColor: background
+                        }
+                    }}
+                >
+                    <Tab.Screen name="Home" component={Home} />
+                    <Tab.Screen name="Add" component={Add} />
+                </Tab.Navigator>
+            </NavigationContainer>
+        </StorageProvider>
     );
   }

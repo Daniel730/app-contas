@@ -1,30 +1,57 @@
-import React from 'react'
-import { Text, TouchableOpacity, View } from 'react-native'
-import Style from '../style/Style'
+import React, { useContext } from 'react'
 import Ionicons from 'react-native-vector-icons/Ionicons'
-import { secondary } from '../style/Colors'
-export default ({ title, type, val }) => {
+import { Text, TouchableOpacity, View } from 'react-native'
 
+import Style from '../style/Style'
+import { active } from '../style/Colors'
+import { StorageContext } from '../providers/storage'
+
+export default ({
+    id, 
+    title, 
+    type, 
+    val, 
+    parcelas
+}) => {
+    const { getData, deleteItem } = useContext(StorageContext)
     const numberFormat = (num) =>{
         return num.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
     }
 
     return (
         <View>
-            <TouchableOpacity activeOpacity={0.8} style={Style.listItem} onPress={() => false}>
-                <View>
+            <TouchableOpacity activeOpacity={0.8} style={Style.listItem} onPress={() => console.log("Clicou")}>
+                <View style={{flex: 3}}>
                     <Text style={Style.itemText}>
-                        {title}
+                        {
+                            title.length > 10 ? `${title.substr(0, 10)}...` : title
+                        }
                     </Text>
                     <Text style={Style.itemtype}>
                         {type === "crd" ? "Crédito" : type === "avt" ? "À vista" : ""}
                     </Text>
                 </View>
-                
-                <Text style={Style.itemText}>
-                    R$ {numberFormat(Number(val))}
-                </Text>
-                <Ionicons name="eye" size={25} color={secondary} />
+                <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+                    {
+                        parcelas != undefined ? 
+                            <Text style={Style.itemText}>{parcelas}</Text>
+                        : 
+                        null
+                    } 
+                </View> 
+                <View style={{ flex: 2, justifyContent: 'center', alignItems: 'center', padding: 5}}>
+                    <Text style={Style.itemText}>
+                        R$ {numberFormat(Number(val))}
+                    </Text>
+                </View>
+                <View style={{flex: 2, flexDirection: 'row', justifyContent: 'space-around', alignItems: 'center'}}>
+                    <TouchableOpacity 
+                        style={{backgroundColor: "red", padding: 5, borderRadius: 30}}
+                        onPress={() => deleteItem(id).then(() => getData("todos"))}    
+                    >
+                        <Ionicons name="trash" size={15} color={active} />
+                    </TouchableOpacity>
+                </View>
             </TouchableOpacity>
         </View>
     )

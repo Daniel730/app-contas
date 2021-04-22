@@ -1,24 +1,27 @@
-import React from 'react'
+import React, { useContext, useState } from 'react'
 import { Alert, Text, TextInput, TouchableOpacity, View } from 'react-native'
 import {Picker} from '@react-native-picker/picker'
 import GestureRecognizer from 'react-native-swipe-gestures';
-import { useState } from 'react/cjs/react.development';
-import { secondary } from '../style/Colors';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+
+import { secondary } from '../style/Colors';
+import { StorageContext } from '../providers/storage';
 import Style from '../style/Style';
-import base64 from 'react-native-base64'
 
 const numberFormat = (num) =>{
     return num.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
 }
 
 export default ({navigation}) => {
+    const { getData } = useContext(StorageContext)
     const [ title, setTitle ] = useState()
     const [ type, setType ] = useState("crd")
     const [ val, setVal ] = useState()
+    const [ date ] = useState(new Date)
     const [ qtdParcelas, setQtdParcelas ] = useState()
 
     const storeData = async () => {
+
         if(title == undefined){
             Alert.alert(`O campo "Titulo" deve ser preenchido`)
             return
@@ -38,21 +41,56 @@ export default ({navigation}) => {
             title, 
             type, 
             val, 
-            qtdParcelas
+            parcelas: (qtdParcelas !== undefined && qtdParcelas > 1) ? `1/${qtdParcelas}` : undefined,
+            qtdParcelas,
+            date
         }
 
         let numberArray = [];
+
         try {
             let storedNumbers = await AsyncStorage.getItem('@list');
+
             if (storedNumbers !== null) {
                 numberArray = JSON.parse(storedNumbers);
             }
+
             numberArray.push(data)
             await AsyncStorage.setItem('@list', JSON.stringify(numberArray));
-            Alert.alert("Cadastrado com sucesso!")
         } catch (e) {
             console.log(e)
         }
+        
+       if(qtdParcelas > 1){
+            for(var i = 2; i <= qtdParcelas; i++){
+                const data = {
+                    id: Number(Date.now()),
+                    title, 
+                    type, 
+                    val, 
+                    parcelas: `${i}/${qtdParcelas}`,
+                    date: new Date(date.setMonth(date.getMonth()+1))
+                }
+
+                let numberArray = [];
+                try {
+                    let storedNumbers = await AsyncStorage.getItem('@list');
+
+                    if (storedNumbers !== null) {
+                        numberArray = JSON.parse(storedNumbers);
+                    }
+
+                    numberArray.push(data)
+                    await AsyncStorage.setItem('@list', JSON.stringify(numberArray));
+                } catch (e) {
+                    console.log(e)
+                }
+            }
+        }
+
+        Alert.alert("Cadastrado com sucesso!")
+        getData('todos')
+        setTitle(); setVal(); setQtdParcelas();
       }
 
     return(
