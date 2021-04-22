@@ -12,7 +12,7 @@ const numberFormat = num => {
 
 export default ({totalAvt, totalCrd}) => {
 
-    const {getData} = useContext(StorageContext)
+    const { getData } = useContext(StorageContext)
     const [ showModal, setShowModal ] = useState(true)
     const [ filter, setFilter ] = useState("todos")
 

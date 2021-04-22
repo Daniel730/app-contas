@@ -11,13 +11,25 @@ import { StorageContext } from '../providers/storage';
 import { months } from '../dados';
 
 export default ({navigation}) => {
-    const { data, totalAvt, totalCrd, getData, mes, setMes, setMesNum, render, showModal, setShowModal } = useContext(StorageContext)
-    const [ modalVisible, setModalVisible]  = useState(false);
+    const { 
+        data, 
+        totalAvt, 
+        totalCrd, 
+        getData, 
+        mes, 
+        setMes, 
+        setMesNum, 
+        render, 
+        showModal, 
+        setShowModal, 
+        anoFiltro 
+    } = useContext(StorageContext)
+    const [ modalVisible, setModalVisible]  = useState(true);
 
     useEffect(() => {
         getData("todos")
 
-        months.map((a, b) => {
+        months.map((a) => {
             a.seq == new Date().getMonth() ? (setMes(a.mes), setMesNum(a.seq)) : false
         })
 
@@ -72,7 +84,7 @@ export default ({navigation}) => {
                 />
                 :
                 <View style={{width: "100%", flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: active}}>
-                    <Text style={{fontSize: 15, fontFamily: "Nexa Bold"}}>Você não tem tem nenhuma conta para {mes}!</Text>
+                    <Text style={{fontSize: 15, fontFamily: "Nexa Bold"}}>Você não tem tem nenhuma conta para {mes} de {anoFiltro}!</Text>
                 </View>
             }
         </GestureRecognizer>
