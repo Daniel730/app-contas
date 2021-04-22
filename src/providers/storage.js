@@ -9,6 +9,7 @@ export const StorageProvider = props => {
     const [totalCrd, setTotalCrd] = useState(0)
     const [mes, setMes] = useState()
     const [mesNum, setMesNum] = useState(new Date().getMonth())
+    const [anoFiltro, setAnoFiltro] = useState(`${new Date().getFullYear()}`)
     const [render, setRender] = useState(true)
 
     const deleteItem = async (id) =>{
@@ -42,11 +43,11 @@ export const StorageProvider = props => {
             if(filter != undefined){
                 arrayValues.map((a, b) => {
                     if(a.type == filter){
-                        if(new Date(a.date).getMonth() == mesNum){
+                        if(new Date(a.date).getMonth() == mesNum && new Date(a.date).getFullYear() == anoFiltro){
                             array.push(a)
                         }
                     }else if(filter == "todos"){
-                        if(new Date(a.date).getMonth() == mesNum){
+                        if(new Date(a.date).getMonth() == mesNum && new Date(a.date).getFullYear() == anoFiltro){
                             array.push(a)
                         }
                     }
@@ -89,7 +90,9 @@ export const StorageProvider = props => {
                 setMesNum, 
                 render, 
                 setRender, 
-                deleteItem
+                deleteItem,
+                anoFiltro, 
+                setAnoFiltro
             }
         }>
             {props.children}
