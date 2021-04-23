@@ -56,7 +56,7 @@ export default StyleSheet.create({
 
     spinner: {
         width: '100%',
-        backgroundColor: "rgb(255, 255, 255)", 
+        backgroundColor: "rgba(0, 0, 0, 0.8)", 
         flex: 1, 
         justifyContent: "center"
     },

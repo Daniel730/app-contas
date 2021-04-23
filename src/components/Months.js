@@ -4,7 +4,7 @@ import { StyleSheet, Pressable, Text, View } from 'react-native'
 import { StorageContext } from '../providers/storage'
 
 export default props => {
-    const {getData} = useContext(StorageContext)
+    const {getData, filter} = useContext(StorageContext)
     return(
         <View style={{margin: 5}}>
             <Pressable
@@ -15,7 +15,7 @@ export default props => {
                 }}
                 onPressOut={() => {
                     props.setModalVisible(!props.modalVisible)
-                    getData("todos")
+                    getData(filter)
                 }}
             >
                 <Text style={styles.textStyle}>{props.mes}</Text>

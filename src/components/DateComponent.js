@@ -8,7 +8,7 @@ import { StorageContext } from '../providers/storage';
 import Ionicons from 'react-native-vector-icons/Ionicons'
 
 export default props => {
-    const { anoFiltro, setAnoFiltro, getData } = useContext(StorageContext)
+    const { anoFiltro, setAnoFiltro, getData, filter } = useContext(StorageContext)
 
     const constYearChange = text => {
         if(text == ""){
@@ -24,7 +24,6 @@ export default props => {
             let result = `${Number(anoFiltro) - 1}`    
             setAnoFiltro(result)
         }else if(filter == "m"){
-            console.log(months)
             for(let i = 0; i < months.length; i++){
                 if(months[i].mes == props.mes){
                     if(i-1 < 0){
@@ -48,7 +47,6 @@ export default props => {
             let result = `${Number(anoFiltro) + 1}`    
             setAnoFiltro(result)
         }else if(filter == "m"){
-            console.log(months)
             for(let i = 0; i < months.length; i++){
                 if(months[i].mes == props.mes){
                     if(i+1 > 11){
@@ -111,7 +109,7 @@ export default props => {
                             style={[styles.button, styles.buttonClose]}
                             onPress={() => {
                                 props.setModalVisible(!props.modalVisible)
-                                getData("todos")
+                                getData(filter)
                             }}
                         >
                             <Text style={styles.textStyle}>Concluido</Text>

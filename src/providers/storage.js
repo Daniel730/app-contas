@@ -7,6 +7,8 @@ export const StorageProvider = props => {
     const [data, setData] = useState([])
     const [totalAvt, setTotalAvt] = useState(0)
     const [totalCrd, setTotalCrd] = useState(0)
+    const [totalTyr, setTotalTyr] = useState(0)
+    const [ filter, setFilter ] = useState("todos")
     const [mes, setMes] = useState()
     const [mesNum, setMesNum] = useState(new Date().getMonth())
     const [anoFiltro, setAnoFiltro] = useState(`${new Date().getFullYear()}`)
@@ -16,8 +18,7 @@ export const StorageProvider = props => {
         try {
             await AsyncStorage.getItem(`@list`).then( async res => {
                 let list = JSON.parse(res)
-                for( var i = 0; i < list.length; i++){ 
-                    console.log(list[i].id, id)
+                for( var i = 0; i < list.length; i++){
                     if(list[i].id === id){
                         list.splice(i, 1)
                         await AsyncStorage.setItem(`@list`, JSON.stringify(list))
@@ -50,6 +51,10 @@ export const StorageProvider = props => {
                         if(new Date(a.date).getMonth() == mesNum && new Date(a.date).getFullYear() == anoFiltro){
                             array.push(a)
                         }
+                    }else if(filter == "tyr"){
+                        if(new Date(a.date).getFullYear() == anoFiltro){
+                            array.push(a)
+                        }
                     }
                 })
             }        
@@ -68,6 +73,10 @@ export const StorageProvider = props => {
                 return c.type == "crd" ? a + Number(c.val) : a + 0
             }, 0));
 
+            setTotalTyr(array.reduce((a, c) => {
+                return a+Number(c.val)
+            }, 0))
+
         } catch (e) {
             console.log(e)
         }
@@ -82,6 +91,7 @@ export const StorageProvider = props => {
                 getData, 
                 totalAvt, 
                 totalCrd, 
+                totalTyr,
                 mes, 
                 setMes, 
                 mesNum, 
@@ -90,7 +100,9 @@ export const StorageProvider = props => {
                 setRender, 
                 deleteItem,
                 anoFiltro, 
-                setAnoFiltro
+                setAnoFiltro,
+                filter, 
+                setFilter
             }
         }>
             {props.children}

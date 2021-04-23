@@ -19,6 +19,9 @@ export default props => {
                         <TouchableOpacity onPress={() => {props.setFilter("todos")}} style={[Style.button, Style.buttonClose]}>
                             <Text style={Style.textStyle}>Todos</Text>
                         </TouchableOpacity>
+                        <TouchableOpacity onPress={() => {props.setFilter("tyr")}} style={[Style.button, Style.buttonClose]}>
+                            <Text style={Style.textStyle}>Este Ano</Text>
+                        </TouchableOpacity>
                         <TouchableOpacity onPress={() => {props.setFilter("avt")}} style={[Style.button, Style.buttonClose]}>
                             <Text style={Style.textStyle}>À vista</Text>
                         </TouchableOpacity>
