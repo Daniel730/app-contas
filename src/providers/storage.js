@@ -68,8 +68,6 @@ export const StorageProvider = props => {
                 return c.type == "crd" ? a + Number(c.val) : a + 0
             }, 0));
 
-            
-
         } catch (e) {
             console.log(e)
         }

@@ -24,7 +24,7 @@ export default ({navigation}) => {
         setShowModal, 
         anoFiltro 
     } = useContext(StorageContext)
-    const [ modalVisible, setModalVisible]  = useState(true);
+    const [ modalVisible, setModalVisible]  = useState(false);
 
     useEffect(() => {
         getData("todos")
@@ -76,12 +76,14 @@ export default ({navigation}) => {
                 </View> 
                 : 
                 (data.length > 0) ?
-                <FlatList 
-                    data={data}
-                    renderItem={renderItem}
-                    maxToRenderPerBatch={10}
-                    keyExtractor={item => `${item.id}`}
-                />
+                <View style={{width: "100%", flex: 1, backgroundColor: "rgba(0, 0, 0, 0.1)"}}>
+                    <FlatList 
+                        data={data}
+                        renderItem={renderItem}
+                        maxToRenderPerBatch={10}
+                        keyExtractor={item => `${item.id}`}
+                    />
+                </View>
                 :
                 <View style={{width: "100%", flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: active}}>
                     <Text style={{fontSize: 15, fontFamily: "Nexa Bold"}}>Você não tem tem nenhuma conta para {mes} de {anoFiltro}!</Text>

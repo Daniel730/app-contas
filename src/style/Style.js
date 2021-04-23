@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native";
-import { active, background, inactive, secondary, tertiary } from "./Colors";
+import { active, background, secondary, tertiary } from "./Colors";
 
 export default StyleSheet.create({
     homeContainer: {
@@ -62,7 +62,7 @@ export default StyleSheet.create({
     },
 
     listItem: {
-        width: 360,
+        width: 370,
         justifyContent: "space-between",
         flexDirection: "row",
         paddingHorizontal: 10,
