@@ -13,14 +13,14 @@ export default ({
     val, 
     parcelas
 }) => {
-    const { getData, deleteItem } = useContext(StorageContext)
+    const { getData, deleteItem, filter } = useContext(StorageContext)
     const numberFormat = (num) =>{
         return num.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
     }
 
     return (
         <View>
-            <TouchableOpacity activeOpacity={0.8} style={Style.listItem} onPress={() => console.log("Clicou")}>
+            <TouchableOpacity activeOpacity={0.8} style={Style.listItem}>
                 <View style={{flex: 3}}>
                     <Text style={Style.itemText}>
                         {
@@ -47,7 +47,7 @@ export default ({
                 <View style={{flex: 2, flexDirection: 'row', justifyContent: 'space-around', alignItems: 'center'}}>
                     <TouchableOpacity 
                         style={{backgroundColor: "red", padding: 5, borderRadius: 30}}
-                        onPress={() => deleteItem(id).then(() => getData("todos"))}    
+                        onPress={() => deleteItem(id).then(() => getData(filter))}    
                     >
                         <Ionicons name="trash" size={15} color={active} />
                     </TouchableOpacity>

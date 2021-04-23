@@ -10,11 +10,10 @@ const numberFormat = num => {
     return num.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
 }
 
-export default ({totalAvt, totalCrd}) => {
+export default ({totalAvt, totalCrd, totalTyr}) => {
 
-    const { getData } = useContext(StorageContext)
+    const { getData, anoFiltro, filter, setFilter } = useContext(StorageContext)
     const [ showModal, setShowModal ] = useState(true)
-    const [ filter, setFilter ] = useState("todos")
 
     useEffect(() => {
         setShowModal(!showModal)
@@ -23,6 +22,7 @@ export default ({totalAvt, totalCrd}) => {
     
     const showAvt = (filter == "avt" || filter == "todos") ? null : {display: 'none'}
     const showCrd = (filter == "crd" || filter == "todos") ? null : {display: 'none'}
+    const showThisYear = (filter == "tyr") ? null : {display: 'none'}
 
     return(
         <View style={Style.headerContainer} elevation={5} >
@@ -44,6 +44,9 @@ export default ({totalAvt, totalCrd}) => {
                         <Text style={[Style.contentText, showCrd]}>
                             Crédito
                         </Text>
+                        <Text style={[Style.contentText, showThisYear]}>
+                            Ano de {anoFiltro}
+                        </Text>
                     </TouchableOpacity>
                 }
             </View>
@@ -53,6 +56,9 @@ export default ({totalAvt, totalCrd}) => {
                 </Text>
                 <Text style={[Style.contentText, showCrd]}>
                     R$ {numberFormat(totalCrd)}
+                </Text>
+                <Text style={[Style.contentText, showThisYear]}>
+                    R$ {numberFormat(totalTyr)}
                 </Text>
             </View>
         </View>

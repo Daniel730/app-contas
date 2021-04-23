@@ -6,15 +6,17 @@ import HeaderHome from '../components/HeaderHome'
 import Item from '../components/Item'
 import Style from '../style/Style'
 import DateComponent from '../components/DateComponent';
-import { active, background, secondary } from '../style/Colors';
+import { active, secondary } from '../style/Colors';
 import { StorageContext } from '../providers/storage';
 import { months } from '../dados';
 
 export default ({navigation}) => {
     const { 
+        filter,
         data, 
         totalAvt, 
         totalCrd, 
+        totalTyr,
         getData, 
         mes, 
         setMes, 
@@ -27,7 +29,7 @@ export default ({navigation}) => {
     const [ modalVisible, setModalVisible]  = useState(false);
 
     useEffect(() => {
-        getData("todos")
+        getData(filter)
 
         months.map((a) => {
             a.seq == new Date().getMonth() ? (setMes(a.mes), setMesNum(a.seq)) : false
@@ -68,11 +70,11 @@ export default ({navigation}) => {
                 style={{justifyContent: 'center', alignItems: 'center'}}
             />
 
-            <HeaderHome totalCrd={totalCrd} totalAvt={totalAvt} />
+            <HeaderHome totalCrd={totalCrd} totalAvt={totalAvt} totalTyr={totalTyr} />
             {
                 render ? 
                 <View style={Style.spinner}>
-                    <ActivityIndicator size="large" color={background} />
+                    <ActivityIndicator size="large" color={active} />
                 </View> 
                 : 
                 (data.length > 0) ?

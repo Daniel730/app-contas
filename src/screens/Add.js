@@ -13,7 +13,7 @@ const numberFormat = (num) =>{
 }
 
 export default ({navigation}) => {
-    const { getData, mesNum, anoFiltro } = useContext(StorageContext)
+    const { getData, mesNum, anoFiltro, filter } = useContext(StorageContext)
     const [ title, setTitle ] = useState()
     const [ type, setType ] = useState("crd")
     const [ val, setVal ] = useState()
@@ -93,7 +93,7 @@ export default ({navigation}) => {
         }
 
         Alert.alert("Cadastrado com sucesso!")
-        getData('todos')
+        getData(filter)
         setTitle(); setVal(); setQtdParcelas();
       }
 
