@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Alert, Text, TextInput, TouchableOpacity, View } from 'react-native'
 import {Picker} from '@react-native-picker/picker'
 import GestureRecognizer from 'react-native-swipe-gestures';
@@ -13,15 +13,19 @@ const numberFormat = (num) =>{
 }
 
 export default ({navigation}) => {
-    const { getData } = useContext(StorageContext)
+    const { getData, mesNum, anoFiltro } = useContext(StorageContext)
     const [ title, setTitle ] = useState()
     const [ type, setType ] = useState("crd")
     const [ val, setVal ] = useState()
-    const [ date ] = useState(new Date)
     const [ qtdParcelas, setQtdParcelas ] = useState()
-
+    const [ date, setDate ] = useState(new Date(Number(anoFiltro), Number(mesNum)))
+    
+    useEffect(() => {
+        setDate(new Date(Number(anoFiltro), Number(mesNum)))
+    }, [mesNum])
+    
     const storeData = async () => {
-
+        
         if(title == undefined){
             Alert.alert(`O campo "Titulo" deve ser preenchido`)
             return
@@ -98,6 +102,7 @@ export default ({navigation}) => {
             style={Style.addContainer}
             onSwipeRight={() => navigation.navigate("Home")}
         >
+            <Text style={{fontSize: 25, marginVertical: 20, color: "black", fontFamily: "Nexa Bold"}}>Cadastrar:</Text>
             <View style={Style.addContent}>
                 <View style={{width: "100%", alignItems: 'center'}}>
                     <TextInput placeholderTextColor={secondary} style={Style.addContentItem} placeholder="Titulo" value={title} onChangeText={title => setTitle(title)} />
