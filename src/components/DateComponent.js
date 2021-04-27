@@ -1,14 +1,13 @@
 import React from 'react'
 import { Modal, Pressable, StyleSheet, Text, TextInput, View } from 'react-native'
+import Ionicons from 'react-native-vector-icons/Ionicons'
 
 import Style from '../style/Style';
 import { months }from "../dados"
-import { useContext } from 'react';
 import { StorageContext } from '../providers/storage';
-import Ionicons from 'react-native-vector-icons/Ionicons'
 
 export default props => {
-    const { anoFiltro, setAnoFiltro, getData, filter } = useContext(StorageContext)
+    const { anoFiltro, setAnoFiltro, getData, filter } = React.useContext(StorageContext)
 
     const constYearChange = text => {
         if(text == ""){

@@ -1,21 +1,18 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Text, TouchableOpacity, View } from 'react-native';
-import { useEffect, useState } from 'react/cjs/react.development';
 
 import { StorageContext } from '../providers/storage';
 import Style from '../style/Style';
 import FilterComponent from './FilterComponent';
 
-const numberFormat = num => {
-    return num.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
-}
-
 export default ({totalAvt, totalCrd, totalTyr}) => {
+    const numberFormat = num => {
+        return num.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+    }
+    const { getData, anoFiltro, filter, setFilter } = React.useContext(StorageContext)
+    const [ showModal, setShowModal ] = React.useState(true)
 
-    const { getData, anoFiltro, filter, setFilter } = useContext(StorageContext)
-    const [ showModal, setShowModal ] = useState(true)
-
-    useEffect(() => {
+    React.useEffect(() => {
         setShowModal(!showModal)
         getData(filter)
     }, [filter])

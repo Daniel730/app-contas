@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react'
+import React from 'react'
 import { ActivityIndicator, FlatList, Text, TouchableOpacity, View } from 'react-native'
 import GestureRecognizer from 'react-native-swipe-gestures';
 
@@ -25,10 +25,10 @@ export default ({navigation}) => {
         showModal, 
         setShowModal, 
         anoFiltro 
-    } = useContext(StorageContext)
-    const [ modalVisible, setModalVisible]  = useState(false);
+    } = React.useContext(StorageContext)
+    const [ modalVisible, setModalVisible]  = React.useState(false);
 
-    useEffect(() => {
+    React.useEffect(() => {
         getData(filter)
 
         months.map((a) => {

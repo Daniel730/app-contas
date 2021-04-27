@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import { Text, TouchableOpacity, View } from 'react-native'
 
@@ -13,7 +13,7 @@ export default ({
     val, 
     parcelas
 }) => {
-    const { getData, deleteItem, filter } = useContext(StorageContext)
+    const { getData, deleteItem, filter } = React.useContext(StorageContext)
     const numberFormat = (num) =>{
         return num.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
     }
@@ -31,10 +31,10 @@ export default ({
                         {type === "crd" ? "Crédito" : type === "avt" ? "À vista" : ""}
                     </Text>
                 </View>
-                <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+                <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center'}}>
                     {
                         parcelas != undefined ? 
-                            <Text style={Style.itemText}>{parcelas}</Text>
+                            <Text style={[Style.itemText, {textDecorationLine: "underline"}]}>{parcelas}</Text>
                         : 
                         null
                     } 

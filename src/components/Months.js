@@ -1,10 +1,10 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { StyleSheet, Pressable, Text, View } from 'react-native'
 
 import { StorageContext } from '../providers/storage'
 
 export default props => {
-    const {getData, filter} = useContext(StorageContext)
+    const {getData, filter} = React.useContext(StorageContext)
     return(
         <View style={{margin: 5}}>
             <Pressable

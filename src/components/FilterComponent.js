@@ -1,5 +1,6 @@
 import React from 'react'
 import { Modal, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+
 import Style from '../style/Style';
 
 export default props => {

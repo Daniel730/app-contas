@@ -1,18 +1,18 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import React, { useState, createContext } from "react";
+import React from "react";
 
-export const StorageContext = createContext({})
+export const StorageContext = React.createContext({})
 
 export const StorageProvider = props => {
-    const [data, setData] = useState([])
-    const [totalAvt, setTotalAvt] = useState(0)
-    const [totalCrd, setTotalCrd] = useState(0)
-    const [totalTyr, setTotalTyr] = useState(0)
-    const [ filter, setFilter ] = useState("todos")
-    const [mes, setMes] = useState()
-    const [mesNum, setMesNum] = useState(new Date().getMonth())
-    const [anoFiltro, setAnoFiltro] = useState(`${new Date().getFullYear()}`)
-    const [render, setRender] = useState(true)
+    const [data, setData] = React.useState([])
+    const [totalAvt, setTotalAvt] = React.useState(0)
+    const [totalCrd, setTotalCrd] = React.useState(0)
+    const [totalTyr, setTotalTyr] = React.useState(0)
+    const [ filter, setFilter ] = React.useState("todos")
+    const [mes, setMes] = React.useState()
+    const [mesNum, setMesNum] = React.useState(new Date().getMonth())
+    const [anoFiltro, setAnoFiltro] = React.useState(`${new Date().getFullYear()}`)
+    const [render, setRender] = React.useState(true)
 
     const deleteItem = async (id) =>{
         try {

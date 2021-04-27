@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React from 'react'
 import { Alert, Text, TextInput, TouchableOpacity, View } from 'react-native'
 import {Picker} from '@react-native-picker/picker'
 import GestureRecognizer from 'react-native-swipe-gestures';
@@ -8,19 +8,19 @@ import { secondary } from '../style/Colors';
 import { StorageContext } from '../providers/storage';
 import Style from '../style/Style';
 
-const numberFormat = (num) =>{
-    return num.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
-}
-
 export default ({navigation}) => {
-    const { getData, mesNum, anoFiltro, filter } = useContext(StorageContext)
-    const [ title, setTitle ] = useState()
-    const [ type, setType ] = useState("crd")
-    const [ val, setVal ] = useState()
-    const [ qtdParcelas, setQtdParcelas ] = useState()
-    const [ date, setDate ] = useState(new Date(Number(anoFiltro), Number(mesNum)))
+    const numberFormat = (num) =>{
+        return num.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
+    }
+
+    const { getData, mesNum, anoFiltro, filter } = React.useContext(StorageContext)
+    const [ title, setTitle ] = React.useState()
+    const [ type, setType ] = React.useState("crd")
+    const [ val, setVal ] = React.useState()
+    const [ qtdParcelas, setQtdParcelas ] = React.useState()
+    const [ date, setDate ] = React.useState(new Date(Number(anoFiltro), Number(mesNum)))
     
-    useEffect(() => {
+    React.useEffect(() => {
         setDate(new Date(Number(anoFiltro), Number(mesNum)))
     }, [mesNum])
     
